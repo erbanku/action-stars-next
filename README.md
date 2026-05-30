@@ -1,4 +1,4 @@
-# GitHub Stars Action
+# Action Stars
 
 Generate a README of your GitHub starred repositories, grouped by month.
 
@@ -6,9 +6,9 @@ Generate a README of your GitHub starred repositories, grouped by month.
 
 ## Features
 
-- Groups stars by `YYYY-MM` with counts, newest first within each month
-- Keeps the current year expanded; older years collapsed in `<details>` blocks
-- Adds an optional attribution blockquote linking back to this action
+-   Groups stars by `YYYY-MM` with counts, newest first within each month
+-   Keeps the current year expanded; older years collapsed in `<details>` blocks
+-   Adds an optional attribution blockquote linking back to this action
 
 ## Usage
 
@@ -16,46 +16,46 @@ Generate a README of your GitHub starred repositories, grouped by month.
 name: update stars
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 */16 * * *"
+    workflow_dispatch:
+    schedule:
+        - cron: "0 */16 * * *"
 
 permissions:
-  contents: write
+    contents: write
 
 jobs:
-  update-stars:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    update-stars:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
 
-      - uses: erbanku/action-stars@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+            - uses: erbanku/action-stars@v1
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit and push
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-            exit 0
-          fi
-          git commit -m "Stars update by GitHub Actions"
-          git push
+            - name: Commit and push
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git add README.md
+                  if git diff --cached --quiet; then
+                    echo "No changes to commit"
+                    exit 0
+                  fi
+                  git commit -m "Stars update by GitHub Actions"
+                  git push
 ```
 
 ## Inputs
 
-| Input | Required | Default | Description |
-| --- | --- | --- | --- |
-| `token` | yes | | GitHub token with permission to read starred repositories |
-| `output-path` | no | `README.md` | Output file path |
-| `title` | no | `GitHub Stars` | README heading title |
-| `include-attribution` | no | `true` | Include the generated-by blockquote |
-| `action-url` | no | `https://github.com/erbanku/action-stars` | Attribution link target |
-| `include-license-footer` | no | `false` | Append a CC0 license section to the README footer |
+| Input                    | Required | Default                                   | Description                                               |
+| ------------------------ | -------- | ----------------------------------------- | --------------------------------------------------------- |
+| `token`                  | yes      |                                           | GitHub token with permission to read starred repositories |
+| `output-path`            | no       | `README.md`                               | Output file path                                          |
+| `title`                  | no       | `GitHub Stars`                            | README heading title                                      |
+| `include-attribution`    | no       | `true`                                    | Include the generated-by blockquote                       |
+| `action-url`             | no       | `https://github.com/erbanku/action-stars` | Attribution link target                                   |
+| `include-license-footer` | no       | `false`                                   | Append a CC0 license section to the README footer         |
 
 ## Example output
 
@@ -66,14 +66,14 @@ jobs:
 
 ## 2026-05 (82)
 
-- [owner/repo](https://github.com/owner/repo) - description
+-   [owner/repo](https://github.com/owner/repo) - description
 
 <details>
 <summary>2025 (241)</summary>
 
 ### 2025-12 (66)
 
-- [owner/repo](https://github.com/owner/repo) - description
+-   [owner/repo](https://github.com/owner/repo) - description
 
 </details>
 ```

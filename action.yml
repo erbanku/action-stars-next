@@ -1,0 +1,45 @@
+name: GitHub Stars
+description: Generate a README of your starred repositories grouped by month.
+author: erbanku
+branding:
+  icon: star
+  color: yellow
+
+inputs:
+  token:
+    description: GitHub token with permission to read starred repositories.
+    required: true
+  output-path:
+    description: Path to write the generated README.
+    required: false
+    default: README.md
+  title:
+    description: README heading title.
+    required: false
+    default: GitHub Stars
+  include-attribution:
+    description: Include the generated-by attribution blockquote in the README.
+    required: false
+    default: "true"
+  action-url:
+    description: URL used in the attribution link.
+    required: false
+    default: https://github.com/erbanku/stars-action
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - name: Generate stars README
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+        OUTPUT_PATH: ${{ inputs.output-path }}
+        README_TITLE: ${{ inputs.title }}
+        INCLUDE_ATTRIBUTION: ${{ inputs.include-attribution }}
+        ACTION_URL: ${{ inputs.action-url }}
+      run: python "${{ github.action_path }}/generate_readme.py"

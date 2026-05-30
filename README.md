@@ -1,4 +1,4 @@
-# Monthly Stargazers README
+# action-stars-next
 
 Generate a README of your GitHub starred repositories, grouped by month.
 

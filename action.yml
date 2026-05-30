@@ -1,4 +1,4 @@
-name: Monthly Stargazers README
+name: action-stars-next
 description: Generate a README of your starred repositories grouped by month.
 author: erbanku
 branding:

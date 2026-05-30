@@ -25,6 +25,10 @@ inputs:
     description: URL used in the attribution link.
     required: false
     default: https://github.com/erbanku/action-stars
+  include-license-footer:
+    description: Append a CC0 license section to the end of the README.
+    required: false
+    default: "false"
 
 runs:
   using: composite
@@ -42,4 +46,5 @@ runs:
         README_TITLE: ${{ inputs.title }}
         INCLUDE_ATTRIBUTION: ${{ inputs.include-attribution }}
         ACTION_URL: ${{ inputs.action-url }}
+        INCLUDE_LICENSE_FOOTER: ${{ inputs.include-license-footer }}
       run: python "${{ github.action_path }}/generate_readme.py"

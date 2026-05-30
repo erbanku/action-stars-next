@@ -55,6 +55,7 @@ jobs:
 | `title` | no | `GitHub Stars` | README heading title |
 | `include-attribution` | no | `true` | Include the generated-by blockquote |
 | `action-url` | no | `https://github.com/erbanku/action-stars` | Attribution link target |
+| `include-license-footer` | no | `false` | Append a CC0 license section to the README footer |
 
 ## Example output
 

@@ -24,7 +24,7 @@ inputs:
   action-url:
     description: URL used in the attribution link.
     required: false
-    default: https://github.com/erbanku/action-stars
+    default: https://github.com/erbanku/action-stars-next
   include-license-footer:
     description: Append a CC0 license section to the end of the README.
     required: false

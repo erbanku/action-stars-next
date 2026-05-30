@@ -24,7 +24,7 @@ inputs:
   action-url:
     description: URL used in the attribution link.
     required: false
-    default: https://github.com/erbanku/stars-action
+    default: https://github.com/erbanku/action-stars
 
 runs:
   using: composite
